@@ -5,7 +5,7 @@ import pprint
 
 class Config:
     def __init__(self, config_name):
-        config_dir = f'.lib/clib/configs/config_{config_name}.json'
+        config_dir = f'./lib/clib/configs/config_{config_name}.json'
         isconfig = os.path.exists(config_dir)
 
         if isconfig:
@@ -38,7 +38,7 @@ class Config:
 
 
 def load_json(config_name):
-    config_dir = f'./configs/config_{config_name}.json'
+    config_dir = f'./lib/clib/configs/config_{config_name}.json'
     print(f'config_dir: {config_dir}')
     try:
         with open(config_dir, "r") as path:

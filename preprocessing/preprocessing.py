@@ -27,7 +27,7 @@ class processor(ABC):
 
 
 class Preprocessor_resp_range(processor):
-    def __init__(self, cfg):
+    def __init__(self, cfg, task='cls'):
         self.raw_data_dir = cfg['raw_data_dir']
 
         file_nums = []
@@ -42,7 +42,10 @@ class Preprocessor_resp_range(processor):
         if not os.path.exists(path):
             os.mkdir(path)
 
-        save_data_dir = f'{path}/cls'
+        if task is 'cls':
+            save_data_dir = f'{path}/cls'
+        elif task is 'reg':
+            save_data_dir = f'{path}/reg'
         if not os.path.exists(save_data_dir):
             os.mkdir(save_data_dir)
 
