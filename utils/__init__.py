@@ -1,3 +1,3 @@
-from lib.clib.utils.base import *
-from lib.clib.utils.configer import *
+from clib.utils.base import *
+from clib.utils.configer import *
 # from lib.clib.utils.pytorch import *

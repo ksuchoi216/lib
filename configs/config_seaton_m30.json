@@ -1,6 +1,0 @@
-{   
-    "raw_data_dir": "./data/raw_seaton_m30",
-    "save_data_dir": "./data/preprocessed",
-    "id_nums": [10, 11, 12],
-    "data_nums": [1, 2]
-}

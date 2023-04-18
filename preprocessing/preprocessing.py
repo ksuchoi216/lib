@@ -118,7 +118,9 @@ class Preprocessor_resp_range(processor):
 
         all_data_x = []
         all_data_y = []
-        for file_num in self.file_nums:
+        for i, file_num in enumerate(self.file_nums):
+            if i == 1:
+
             data_y = self.load_y(file_num)
             data_x = self.load_x(file_num)
             print(f'{file_num}: data_x shape: {data_x.shape}')
@@ -138,8 +140,8 @@ class Preprocessor_resp_range(processor):
 
 
 class Preprocessor_resp_reg(Preprocessor_resp_range):
-    def __init__(self, cfg):
-        super().__init__(cfg)
+    def __init__(self, cfg, task='reg'):
+        super().__init__(cfg, task)
 
     def load_y(self, file_num):
         path_res = f'{self.raw_data_dir}/res.csv'

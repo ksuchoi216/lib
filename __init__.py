@@ -1,3 +1,3 @@
-from lib.clib.models import *
-from lib.clib.preprocessing import *
-from lib.clib.utils import *
+from clib.models import *
+from clib.preprocessing import *
+from clib.utils import *
