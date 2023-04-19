@@ -4,12 +4,14 @@ import pprint
 
 
 class Config:
-    def __init__(self, config_name):
-        config_dir = f'./lib/clib/configs/config_{config_name}.json'
-        isconfig = os.path.exists(config_dir)
+    def __init__(self, config_name, config_dir='./configs'):
+        self.config_path = f'{config_dir}/cfg_{config_name}.json'
+        print(f'config_path: {self.config_path}')
 
+    def __call__(self):
+        isconfig = os.path.exists(self.config_path)
         if isconfig:
-            with open(config_dir, "r") as path:
+            with open(self.config_path, "r") as path:
                 cfg = json.load(path)
 
             general = {}
@@ -26,11 +28,12 @@ class Config:
                     cfg[k]['general'] = general
                 print(f'{k:20}: {v}')
 
-            print('hyperparameter: ')
-            pprint.pprint(cfg['hyperparameters'])
+            # print('hyperparameter: ')
+            # pprint.pprint(cfg['hyperparameters'])
             self.cfg = cfg
+        else:
+            return print("There is NOT a config file")
 
-    def __call__(self):
         return self.cfg
 
     def get(self):
@@ -38,7 +41,7 @@ class Config:
 
 
 def load_json(config_name):
-    config_dir = f'./lib/clib/configs/config_{config_name}.json'
+    config_dir = f'./clib/configs/config_{config_name}.json'
     print(f'config_dir: {config_dir}')
     try:
         with open(config_dir, "r") as path:

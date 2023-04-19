@@ -120,7 +120,7 @@ class Preprocessor_resp_range(processor):
         all_data_y = []
         for i, file_num in enumerate(self.file_nums):
             if i == 1:
-
+                print('')
             data_y = self.load_y(file_num)
             data_x = self.load_x(file_num)
             print(f'{file_num}: data_x shape: {data_x.shape}')
