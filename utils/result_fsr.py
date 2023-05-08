@@ -9,7 +9,7 @@ from matplotlib.patches import Rectangle, Arrow
 
 from functools import partial
 
-from clib.utils import reorder_columns
+from lib.utils import reorder_columns
 
 
 plt.rcParams['figure.figsize'] = (16, 3)

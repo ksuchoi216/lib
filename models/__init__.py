@@ -1,1 +1,1 @@
-from clib.models import *
+from lib.models import *

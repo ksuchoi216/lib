@@ -1,3 +1,3 @@
-from clib.models import *
-from clib.data_processing import *
-from clib.utils import *
+from lib.models import *
+from lib.data_processing import *
+from lib.utils import *
