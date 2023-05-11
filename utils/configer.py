@@ -41,7 +41,7 @@ class Config:
 
 
 def load_json(config_name):
-    config_dir = f'./clib/configs/config_{config_name}.json'
+    config_dir = f'.c/configs/{config_name}.json'
     print(f'config_dir: {config_dir}')
     try:
         with open(config_dir, "r") as path:

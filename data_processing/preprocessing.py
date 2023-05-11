@@ -51,6 +51,7 @@ class Preprocessor_resp_range(processor):
 
         self.path_save_x = f'{save_data_dir}/data_x_resp.npy'
         self.path_save_y = f'{save_data_dir}/data_y_resp.npy'
+        self.path_save_p = f'{save_data_dir}/data_p_resp.npy'
 
     def load_y(self, file_num):
         path_res = f'{self.raw_data_dir}/res.csv'
@@ -78,7 +79,9 @@ class Preprocessor_resp_range(processor):
         self.fsr_nums = dfy['fsr_num'].to_numpy()
         self.starts = dfy['start'].to_numpy(np.int)
         self.ends = dfy['end'].to_numpy(np.int)
-        data_y = dfy['label'].to_numpy(np.int)
+        # data_y = dfy['label'].to_numpy(np.int)
+
+        data_y = dfy[['label', 'p_resp_freq']].to_numpy(np.int)
 
         return data_y
 
@@ -124,6 +127,7 @@ class Preprocessor_resp_range(processor):
             data_y = self.load_y(file_num)
             data_x = self.load_x(file_num)
             print(f'{file_num}: data_x shape: {data_x.shape}')
+            # print(f'{file_num}: data_p shape: {data_p.shape}')
             all_data_x.append(data_x)
             all_data_y.append(data_y)
 
