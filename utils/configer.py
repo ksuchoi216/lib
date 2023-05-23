@@ -1,14 +1,15 @@
+import yaml
 import os
 import json
 import pprint
 
 
-class Config:
+class Configer:
     def __init__(self, config_name, config_dir='./configs'):
-        self.config_path = f'{config_dir}/cfg_{config_name}.json'
+        self.config_path = f'{config_dir}/{config_name}.json'
         print(f'config_path: {self.config_path}')
 
-    def __call__(self):
+    def get(self):
         isconfig = os.path.exists(self.config_path)
         if isconfig:
             with open(self.config_path, "r") as path:
@@ -21,27 +22,24 @@ class Config:
                     general[k] = v
 
             for k, v in cfg.items():
-                if k == 'hyperparameters':
+                if k == 'hps':
                     continue
 
                 if isinstance(v, dict):
                     cfg[k]['general'] = general
-                print(f'{k:20}: {v}')
-
-            # print('hyperparameter: ')
-            # pprint.pprint(cfg['hyperparameters'])
             self.cfg = cfg
         else:
             return print("There is NOT a config file")
 
         return self.cfg
 
-    def get(self):
-        return self.cfg
-
 
 def load_json(config_name):
+<<<<<<< HEAD
     config_dir = f'.c/configs/{config_name}.json'
+=======
+    config_dir = f'./clib/configs/{config_name}.json'
+>>>>>>> 450b982 (pass)
     print(f'config_dir: {config_dir}')
     try:
         with open(config_dir, "r") as path:
@@ -50,3 +48,9 @@ def load_json(config_name):
         return cfg
     except FileNotFoundError:
         print('File does NOT exist')
+
+
+def load_yaml():
+    with open('./configs/baseline.yaml', 'r') as f:
+        cfg = yaml.safe_load(f)
+    print(cfg)
