@@ -1,6 +1,7 @@
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 def do_pca(x_data, y_data, info_ratio):
@@ -34,12 +35,14 @@ def do_pca(x_data, y_data, info_ratio):
     print("data:", x_data.shape)
     print("projected:", projected.shape)
 
+    plt.figure(figsize=(20, 8))
     plt.plot(_pca.explained_variance_)
     plt.grid()
     plt.xlabel('Explained Variance')
     plt.xticks(np.arange(0, dim))
-    plt.figure()
+    plt.show()
 
+    plt.figure(figsize=(20, 8))
     plt.plot(np.arange(len(_pca.explained_variance_ratio_))+1,
              np.cumsum(_pca.explained_variance_ratio_), 'o-')  # plot the scree graph
     plt.axis([1, len(_pca.explained_variance_ratio_), 0, 1])
